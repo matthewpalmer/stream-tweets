@@ -1,0 +1,17 @@
+<script src="/socket.io/socket.io.js"></script>
+
+<body>
+	<h1>Streaming Tweets</h1>
+	<div id="myAnchor">
+		
+	</div>
+</body>
+<script>
+  var socket = io.connect('http://localhost');
+  socket.on('news', function (data) {
+    console.log(data);
+	document.getElementById('myAnchor').innerHTML='<br/>'+data+'<br/>'+document.getElementById('myAnchor').innerHTML;
+	
+    socket.emit('my other event', { my: 'data' });
+  });
+</script>
